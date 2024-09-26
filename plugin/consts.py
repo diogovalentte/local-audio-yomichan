@@ -1,7 +1,9 @@
+import os
 from typing import Final
 
 APP_NAME: Final = "local-audio-yomichan"
-HOSTNAME: Final = "localhost"
+ACCESS_HOSTNAME: Final = os.getenv("ACCESS_HOSTNAME", "localhost")
+BIND_HOSTNAME: Final = os.getenv("BIND_HOSTNAME", "localhost")
 PORT: Final = 5050
 DB_FILE_NAME: Final = "entries.db"
 ANDROID_DB_FILE_NAME: Final = "android.db"

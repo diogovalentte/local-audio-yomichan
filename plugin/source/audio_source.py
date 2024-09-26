@@ -11,10 +11,7 @@ from ..util import (
     get_data_dir,
     URLComponents,
 )
-from ..consts import (
-    HOSTNAME,
-    PORT,
-)
+from ..consts import ACCESS_HOSTNAME
 
 
 @dataclass
@@ -59,9 +56,14 @@ class AudioSource(ABC):
         """
         constructs url to get the audio file (as opposed to the url to get audio sources)
         """
+        if ACCESS_HOSTNAME.startswith("http"):
+            scheme = "http"
+        else:
+            scheme = "https"
+
         parts = URLComponents(
-            scheme="http",
-            netloc=f"{HOSTNAME}:{PORT}",
+            scheme=scheme,
+            netloc=f"{ACCESS_HOSTNAME}",
             path=f"{self.data.id}/{file_path}",
             params="",
             query="",
