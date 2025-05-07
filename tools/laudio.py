@@ -60,7 +60,7 @@ from typing import Any
 
 import requests
 
-from plugin.consts import HOSTNAME, PORT
+from plugin.consts import ACCESS_HOSTNAME
 
 
 rx_PLAIN_FURIGANA = re.compile(r" ?([^ >]+?)\[(.+?)\]")
@@ -263,10 +263,10 @@ class AudioPlayer:
 
     def get_sources(self):
         if self.reading is None:
-            query_url = f"http://{HOSTNAME}:{PORT}/?term={self.word}"
+            query_url = f"http://{ACCESS_HOSTNAME}/?term={self.word}"
         else:
             query_url = (
-                f"http://{HOSTNAME}:{PORT}/?term={self.word}&reading={self.reading}"
+                f"http://{ACCESS_HOSTNAME}/?term={self.word}&reading={self.reading}"
             )
         r = requests.get(query_url)
         sources = r.json().get("audioSources")

@@ -211,7 +211,7 @@ class LocalAudioHandler(http.server.SimpleHTTPRequestHandler):
 
 def run_server():
     # Else, run it in a separate thread so it doesn't block
-    httpd = http.server.ThreadingHTTPServer((HOSTNAME, PORT), LocalAudioHandler)
+    httpd = http.server.ThreadingHTTPServer((BIND_HOSTNAME, PORT), LocalAudioHandler)
     server_thread = threading.Thread(target=httpd.serve_forever)
     server_thread.daemon = True
     server_thread.start()

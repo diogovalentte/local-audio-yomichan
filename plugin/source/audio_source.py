@@ -12,8 +12,7 @@ from ..util import (
     URLComponents,
 )
 from ..consts import (
-    HOSTNAME,
-    PORT,
+    ACCESS_HOSTNAME
 )
 
 
@@ -61,7 +60,7 @@ class AudioSource(ABC):
         """
         parts = URLComponents(
             scheme="http",
-            netloc=f"{HOSTNAME}:{PORT}",
+            netloc=f"{ACCESS_HOSTNAME}",
             path=f"{self.data.id}/{file_path}",
             params="",
             query="",
