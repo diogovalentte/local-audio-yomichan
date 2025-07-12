@@ -1,0 +1,12 @@
+services:
+  local-audio-yomichan:
+    container_name: local-audio-yomichan
+    image: ghcr.io/diogovalentte/local-audio-yomichan:latest
+    environment:
+      - ACCESS_HOSTNAME=${ACCESS_HOSTNAME}
+      - BIND_HOSTNAME=${BIND_HOSTNAME:-0.0.0.0}
+    volumes:
+      - ./data:/data/local-audio-yomichan
+    ports:
+      - 5050:5050
+    restart: unless-stopped

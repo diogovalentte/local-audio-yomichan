@@ -1,3 +1,17 @@
+# This Project
+
+This project provides a distroless and nonroot Docker image for the [local-audio-yomichan](https://github.com/yomidevs/local-audio-yomichan) project.
+
+1. Create a folder to store the data. It should be owned by user `65532` (_the user inside the container_). You can use the following command to create the folder and set the permissions (_change the `./data` path to your desired location_):
+
+```bash
+mkdir -p ./data && sudo chown 65532:65532 ./data
+```
+
+3. Use the `docker-compose.yml` file in this repository to run the local audio yomichan server. Also set the env variables:
+
+- `ACCESS_HOSTNAME`: The hostname or IP address of the host machine where the server will be accessible. This is used to generate the correct URLs for Yomichan.
+- `BIND_HOSTNAME`: The hostname or IP address that the server will bind to. This is typically set to `0.0.0.0` to allow access from any IP address.
 
 # Local Audio Server for Yomitan
 
